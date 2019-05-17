@@ -1,14 +1,21 @@
 
-import React, { Component } from "react";
+import React from "react";
+import { Provider } from 'react-redux';
+import { createStore, combineReducers } from 'redux';
+import { composeWithDevTools } from 'redux-devtools-extension';
 
-class App extends Component {
-    render() {
-        return (
-            <div>
-                <h1>My React App!</h1>
-            </div>
-        );
-    }
-}
+import * as reducers from '../reducers';
+import { App as Comp } from '../components';
+
+const store = createStore( 
+    combineReducers( reducers ),
+    composeWithDevTools()
+);
+
+const App = () => (
+    <Provider store={store}>
+        <Comp/>
+    </Provider>
+);
 
 export default App;
