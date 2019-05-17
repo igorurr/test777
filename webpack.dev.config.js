@@ -1,25 +1,21 @@
 const path = require("path");
+const comon = require("./webpack.comon.config");
 
 module.exports = {
-  entry: "./src/index.jsx",
+  ...comon,
   output: {
     path: path.join(__dirname, "/build/dev"),
     filename: "bundle.js"
   },
   devtool: 'inline-source-map',
   mode: 'development',
-  module: {
-    rules: [
-      {
-        test: /\.(jsx|js)?$/,
-        exclude: /node_modules/,
-        loader: "babel-loader"
-      }
-    ]
-  },
   watch: true,
   watchOptions: {
     aggregateTimeout: 600,
     ignored: ['node_modules']
+  },
+  devServer: {
+    contentBase: path.join(__dirname, "/build/dev"),
+    port: 3000
   }
 };

@@ -1,21 +1,11 @@
 const path = require("path");
+const comon = require("./webpack.comon.config");
 
 module.exports = {
-  entry: "./src/index.jsx",
+  ...comon,
   output: {
     path: path.join(__dirname, "/build/last"),
     filename: "bundle.js"
   },
   mode: 'production',
-  module: {
-    rules: [
-      {
-        test: /\.(jsx|js)?$/,
-        exclude: /node_modules/,
-        use: {
-          loader: "babel-loader"
-        },
-      }
-    ]
-  },
 };
