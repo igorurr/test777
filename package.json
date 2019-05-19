@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "server": "node ./src/server/index.js",
     "start": "node ./src_dev/prepeare.js --dev && webpack-dev-server --config webpack.dev.config.js",
     "build": "node ./src_dev/prepeare.js && webpack-dev-server --config webpack.prod.config.js"
   },
@@ -21,6 +22,7 @@
   },
   "dependencies": {
     "express": "^4.17.0",
+    "moment": "^2.24.0",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-redux": "^7.0.3",
@@ -28,6 +30,7 @@
     "redux-devtools-extension": "^2.13.8",
     "redux-thunk": "^2.3.0",
     "socket.io": "^2.2.0",
+    "socket.io-client": "^2.2.0",
     "styled-components": "^4.2.0"
   }
 }

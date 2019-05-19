@@ -6,7 +6,6 @@ import {
     SEND_MESSAGE_COMPLETE,
     RECEIVE_MESSAGE,
     WRITING_MESSAGE,
-    CLEARE_MESSAGES
 } from '../constants/chat';
 
 const initialState = {
@@ -71,22 +70,6 @@ export default ( state = initialState, { type, ...action } ) => {
             return {
                 ...state,
                 message,
-            }
-        }
-
-        // typeCleare === full : полностью очищаем
-        //            === half : половина
-        case CLEARE_MESSAGES: {
-            const { typeCleare } = action;
-            return {
-                ...state,
-                messages: 
-                    typeCleare === 'full' ? 
-                        [] : 
-                        state.messages.reduce( 
-                            ( acc, el, i ) => i > state.messages.length / 2 && acc.push(el),
-                            []
-                        ),
             }
         }
 

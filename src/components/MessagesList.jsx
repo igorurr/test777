@@ -1,13 +1,19 @@
 import React, { Component } from "react";
+import styled from 'styled-components';
+
+const Article = styled.article`
+    flex: 1 1 auto;
+
+`;
 
 import { Message } from '../containers';
 
 const MessagesList = ( { messages } ) => (
-    <article>
+    <Article>
         {messages.map( el => (
             <Message message={el.id} />
         ) )}
-    </article>
+    </Article>
 );
 
 export default MessagesList;
