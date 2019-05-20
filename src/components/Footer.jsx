@@ -1,18 +1,22 @@
-import React, { Component } from "react";
+import React from "react";
 import styled from 'styled-components';
 
-const FooterStyled = styled.footer`
-    flex: 0 0 auto;
+import { BackSide } from './';
+
+import { NewMessage } from '../containers';
+
+const Component = styled.footer`
+    position: sticky;
+    bottom: 0;
     text-align: center;
-    background: #0000aa20;
-    box-shadow: 0 0 60px 40px #0000aa20;
-    margin: 12px;
+    background: #f0f0f0;
 `;
 
 const Footer = ( ) => (
-    <FooterStyled>
-        GitHub Беляков И. А. 2019
-    </FooterStyled>
+    <Component>
+        <NewMessage />
+        <BackSide />
+    </Component>
 );
 
 export default Footer;

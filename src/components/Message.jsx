@@ -1,8 +1,8 @@
-import React, { Component } from "react";
+import React from "react";
 import moment from 'moment';
 import styled from 'styled-components';
 
-const Article = styled.article`
+const Component = styled.article`
     background: #fff;
     min-height: 70px;
     margin: 7px 0;
@@ -50,7 +50,7 @@ const Main = styled.main`
 
 
 const Message = ( { date, user, message, isMy } ) => (
-    <Article
+    <Component
         color={user.color}
         isMy={isMy}
     >
@@ -58,7 +58,7 @@ const Message = ( { date, user, message, isMy } ) => (
             <NickName color={user.color}>{user.name}</NickName> - {moment(date).format('kk:mm DD MMM')}
         </Header>
         <Main>{message}</Main>
-    </Article>
+    </Component>
 );
 
 export default Message;

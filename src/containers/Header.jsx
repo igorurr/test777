@@ -1,20 +1,8 @@
-import React, { Component } from "react";
+import React from "react";
 import { connect } from 'react-redux';
 
 import {  } from './';
 import { Header as Comp } from '../components';
-
-class Header extends Component {
-    closeApp() {
-        console.log('прила закрывается')
-    }
-
-    render() {
-        return (
-            <Comp {...this.props} closeApp={this.closeApp} />
-        );
-    }
-};
 
 export default connect(
     state => {
@@ -31,4 +19,4 @@ export default connect(
             color,
         }
     }
-)( Header );
+)( Comp );

@@ -1,18 +1,21 @@
-import React, { Component } from "react";
+import React from "react";
 import styled from 'styled-components';
 
 import checkPressEnter from './helpers/checkPressEnter';
 
-const Article = styled.article`
+const Component = styled.article`
     flex: 0 0 auto;
+
+    position: sticky;
+    bottom: 64px;
 
     display: flex;
     height: 89px;
+    z-index: 101;
 
-    &:before {
+    &:before, &:after {
         content: "";
         position: absolute;
-        top: 0;
         left: -60px;
         right: -60px;
         height: 1px;
@@ -24,6 +27,14 @@ const Article = styled.article`
             rgba(0,0,0,0.15) 85%, 
             rgba(0,0,0,0) 100%
         );
+    }
+
+    &:before {
+        top: 0;
+    }
+
+    &:after {
+        bottom: 0;
     }
 `;
 
@@ -48,7 +59,7 @@ const Button = styled.button`
 `;
 
 const NewMessage = ( { sendMessage, changeMessage, message, sendMessageIsLoading } ) => (
-    <Article>
+    <Component>
         <Textarea 
             onChange={(e)=>changeMessage(e.target.value)}
             placeholder='Введи сообщение и отправь его самолётом...'
@@ -62,7 +73,7 @@ const NewMessage = ( { sendMessage, changeMessage, message, sendMessageIsLoading
         >
             ✈
         </Button>
-    </Article>
+    </Component>
 );
 
 export default NewMessage;

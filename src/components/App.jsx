@@ -2,8 +2,8 @@
 import React from "react";
 import styled from 'styled-components';
 
-import { Chat, Footer } from './';
-import { Header } from '../containers';
+import { Footer } from './';
+import { Header, MessagesList } from '../containers';
 
 import { device } from './helpers/sizes';
 
@@ -29,7 +29,7 @@ const Main = styled.main`
 const App = () => (
     <Main>
         <Header />
-        <Chat />
+        <MessagesList />
         <Footer />
     </Main>
 );

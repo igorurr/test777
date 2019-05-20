@@ -1,10 +1,32 @@
-import React, { Component } from "react";
+import React from "react";
 import styled from 'styled-components';
 
-const HeaderStyled = styled.header`
-    flex: 0 0 auto;
-    margin: 30px 0;
+const Component = styled.header`
     text-align: center;
+    position: sticky;
+    top: 0;
+    padding: 30px 0;
+    margin: 0;
+    background: #f0f0f0;
+    z-index: 101;
+    cursor: default;
+
+    &::after {
+        content: "";
+        position: absolute;
+        left: -40px;
+        right: -40px;
+        bottom: 0;
+        height: 1px;
+        background: linear-gradient( 
+            to right, 
+            rgba(0,0,0,0) 0%, 
+            rgba(0,0,0,0.15) 15%, 
+            rgba(0,0,0,0.3) 50%, 
+            rgba(0,0,0,0.15) 85%, 
+            rgba(0,0,0,0) 100% 
+        );
+    }
 `;
 
 const UserNickname = styled.span`
@@ -20,21 +42,21 @@ const UserColor = styled.span`
     border-radius: 100%;
 `; 
 
-const H1 = styled.h1`
+const Logo = styled.h1`
     font-family: 'Pacifico';
     font-size: 28px;
     margin-right: 19%;
     color: #006;
 `; 
 
-const H2 = styled.h2`
+const Content = styled.h2`
     margin-left: 19%;
 `; 
 
 const Header = ( { name, color, isLoading } ) => (
-    <HeaderStyled>
-        <H1>Чат на websocket</H1>
-        <H2>
+    <Component>
+        <Logo>Чат на websocket</Logo>
+        <Content>
             {isLoading ? 
             (
                 <>Загрузка...</>
@@ -46,8 +68,8 @@ const Header = ( { name, color, isLoading } ) => (
                     цвет: <UserColor color={color} />
                 </>
             )}
-        </H2>
-    </HeaderStyled>
+        </Content>
+    </Component>
 );
 
 export default Header;

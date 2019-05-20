@@ -1,7 +1,7 @@
-import React, { Component } from "react";
+import React from "react";
 import styled from 'styled-components';
 
-const Article = styled.article`
+const Component = styled.article`
     flex: 1 1 auto;
     display: flex;
     flex-direction: column;
@@ -10,11 +10,11 @@ const Article = styled.article`
 import { Message } from '../containers';
 
 const MessagesList = ( { messages } ) => (
-    <Article>
+    <Component>
         {messages.map( el => (
             <Message key={el.id} id={el.id} />
         ) )}
-    </Article>
+    </Component>
 );
 
 export default MessagesList;
