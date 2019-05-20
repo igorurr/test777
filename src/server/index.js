@@ -14,7 +14,7 @@ var {
 
 var app = http.createServer();
 var io = io.listen(app);
-app.listen(80);
+app.listen(9876);
 
 const users = []; // [ { id, color, name, online } ]
 let newUser = 0;
@@ -26,7 +26,7 @@ const logins = [
 		count: 0
 	},
 	{
-		name: 'Жёлтый воронёнок',
+		name: 'Маленький воронёнок',
 		count: 0
 	},
 	{
@@ -34,26 +34,48 @@ const logins = [
 		count: 0
 	},
 	{
-		name: 'Серая канарейка',
+		name: 'Милая канарейка',
 		count: 0
 	},
 	{
 		name: 'Добрый стервятник',
 		count: 0
 	},
+	{
+		name: 'Важнный стриж',
+		count: 0
+	},
+	{
+		name: 'Невероятный снигирь',
+		count: 0
+	},
+	{
+		name: 'Ранняя пташка',
+		count: 0
+	},
+	{
+		name: 'Обычная синичка',
+		count: 0
+	},
 ];
 
 const colors = [
 	'#003284',
+	'#004B84',
+	'#0080E2',
+	'#5881D3',
+	'#FF0000',
 	'#840000',
 	'#4f8400',
 	'#008442',
 	'#00847b',
 	'#530084',
 	'#840070',
+	'#D157A8',
 	'#b70b3b',
 	'#db7e0d',
 	'#33e50b',
+	'#70CE56',
 	'#0b3502',
 ];
 

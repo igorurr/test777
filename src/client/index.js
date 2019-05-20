@@ -17,7 +17,7 @@ import {
     RECEIVE_MESSAGE
 } from '../constants/websockets';
 
-const socket = io('http://localhost');
+const socket = io('http://localhost:9876');
 
 socket.on('connect', () => {
     console.log('connecte to server');
