@@ -20,25 +20,33 @@ import {
 const socket = io('http://localhost');
 
 socket.on('connect', () => {
-  console.log(socket.disconnected); // false
+    console.log('connecte to server');
 });
 
-socket.on(INIT_USER, () => {
-    store.dispatch()
+socket.on(INIT_USER, ( { users, user } ) => {
+    store.dispatch( init( users, user ) );
 });
 
-socket.on(ADD_USER, () => {
+socket.on(ADD_USER, ( { user } ) => {
+    store.dispatch( addUser( user ) );
 });
 
-socket.on(EXIT_USER, () => {
+socket.on(EXIT_USER, ( { user } ) => {
+    store.dispatch( exitUser( user ) );
 });
 
 socket.on(SEND_MESSAGE, () => {
+    store.dispatch( sendMessageComplete() );
 });
 
-socket.on(RECEIVE_MESSAGE, () => {
+socket.on(RECEIVE_MESSAGE, ( { message } ) => {
+    store.dispatch( receiveMessage( message ) );
 });
 
 socket.on('disconnect', () => {
     console.log('server leave');
 });
+
+export const sendMessage = ( message ) => {
+    socket.emit(SEND_MESSAGE, {message});
+}

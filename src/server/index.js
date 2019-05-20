@@ -2,6 +2,8 @@ var io = require('socket.io');
 var http = require('http');
 var moment = require('moment');
 
+console.log('server runing...');
+
 var {
 	INIT_USER,
 	ADD_USER,
@@ -14,7 +16,7 @@ var app = http.createServer();
 var io = io.listen(app);
 app.listen(80);
 
-const users = [];
+const users = []; // [ { id, color, name, online } ]
 let newUser = 0;
 let newMsg = 0;
 
@@ -56,46 +58,53 @@ const colors = [
 ];
 
 const getRandLogin = () => {
-	const i = Math.round( Math.random() * logins.count + 0.5 );
+	const i = Math.floor( Math.random() * logins.length );
 	const login = `${logins[i].name} ${logins[i].count === 0 ? '' : logins[i].count + 1}`;
 	logins[i].count++;
 	return login;
 }
 
 const getRandColor = () => {
-	const i = Math.round( Math.random() * colors.count + 0.5 );
+	const i = Math.floor( Math.random() * colors.length );
 	return colors[i];
 }
 
 io.sockets.on('connection', (socket) => {
 	console.log( ADD_USER, newUser );
 	const user = {
-		login: getRandLogin(),
+		id: newUser,
 		color: getRandColor(),
-		id: newUser
+		name: getRandLogin(),
+		online: true
 	};
 	users.push( user );
 	newUser++;
-	socket.broadcast.emit( ADD_USER, user );
+	socket.broadcast.emit( ADD_USER, { user } );
 	socket.emit( INIT_USER, { 
 		users,
-		user
+		user: user.id
 	} );
 
 	socket.on(SEND_MESSAGE, ( { message } ) => {
-		console.log( SEND_MESSAGE, user.id )
-		const msg = {
-			id: newMsg,
-			message,
-			user: user.id,
-			date: moment().utc().valueOf()
-		};
-		socket.broadcast.emit( RECEIVE_MESSAGE, { message: msg } );
-		socket.emit( SEND_MESSAGE, { message: msg } );
+		console.log( SEND_MESSAGE, user.id );
+		setTimeout( ()=>{
+			const msg = {
+				id: newMsg,
+				message,
+				user: user.id,
+				date: moment().utc().valueOf()
+			};
+			newMsg++;
+			io.sockets.emit( RECEIVE_MESSAGE, { message: msg } )
+			socket.emit( SEND_MESSAGE, { message: msg } );
+		}, 1000 );
 	});
 
 	socket.on('disconnect', () => {
 		console.log( EXIT_USER, user.id )
 		socket.broadcast.emit( EXIT_USER, { user: user.id } );
+		users.find( el => el.id === user.id ).online = false;
 	});
 });
+
+console.log('server runed');

@@ -5,16 +5,28 @@ import {  } from './';
 import { Message as Comp } from '../components';
 
 class Message extends Component {
+    constructor(props) {
+        super(props);
 
-    static getDerivedStateFromProps( { getMessage, id }, state ) {
+        this.state = {
+            message: null
+        }
+    }
+
+    static getDerivedStateFromProps( { getMessage, getUser, isMy, id }, state ) {
+        const message = getMessage( id );
         return {
             ...state,
-            message: getMessage( id )
+            message: {
+                ...message,
+                user: getUser( message.user ),
+                isMy: isMy( message.user )
+            }
         }
     }
 
     render() {
-        const { message } = this.props;
+        const { message } = this.state;
         return (
             <Comp {...message} />
         );
@@ -23,6 +35,8 @@ class Message extends Component {
 
 export default connect(
     state => ({
-        getMessage: id => state.chat.messages.find( el => el.id === id )
+        getMessage: id => state.chat.messages.find( el => el.id === id ),
+        getUser: id => state.chat.users.find( el => el.id === id ),
+        isMy: id => state.chat.user === id,
     })
 )( Message );

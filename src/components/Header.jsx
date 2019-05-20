@@ -31,12 +31,21 @@ const H2 = styled.h2`
     margin-left: 19%;
 `; 
 
-const Header = ( user ) => (
+const Header = ( { name, color, isLoading } ) => (
     <HeaderStyled>
         <H1>Чат на websocket</H1>
         <H2>
-            твой ник: <UserNickname color={'#f0f'}>:nickname:</UserNickname>, 
-            цвет: <UserColor color={'#f0f'} />
+            {isLoading ? 
+            (
+                <>Загрузка...</>
+            )
+            :
+            (
+                <>
+                    твой ник: <UserNickname color={color}>{name}</UserNickname>, 
+                    цвет: <UserColor color={color} />
+                </>
+            )}
         </H2>
     </HeaderStyled>
 );

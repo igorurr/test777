@@ -4,21 +4,23 @@ import { connect } from 'react-redux';
 import {  } from './';
 import { NewMessage as Comp } from '../components';
 
+import { sendMessage, writingMessage } from '../actions/chat';
+
 class NewMessage extends Component {
     render() {
-        const { sendMessage, message } = this.props;
-        
         return (
-            <Comp message={message} sendMessage={sendMessage}  />
+            <Comp {...this.props} />
         );
     }
 };
 
 export default connect(
     state => ({
-        message: state.chat.message
+        message: state.chat.message,
+        sendMessageIsLoading: state.chat.sendMessageIsLoading
     }),
     dispatch => ({
-        sendMessage: message => dispatch( message )
+        sendMessage: () => dispatch( sendMessage() ),
+        changeMessage: message => dispatch( writingMessage( message ) ),
     })
 )( NewMessage );

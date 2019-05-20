@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import styled from 'styled-components';
 
+import checkPressEnter from './helpers/checkPressEnter';
+
 const Article = styled.article`
     flex: 0 0 auto;
 
@@ -37,20 +39,29 @@ const Button = styled.button`
     flex: 0 0 auto;
     width: 83px;
     background: transparent;
-    cursor: pointer;
     font-size: 28px;
     color: #0005;
+
+    &:not(:disabled){
+        cursor: pointer;
+    }
 `;
 
-const NewMessage = ( sendMessage, changeMessage, message ) => (
+const NewMessage = ( { sendMessage, changeMessage, message, sendMessageIsLoading } ) => (
     <Article>
         <Textarea 
-            onChange={changeMessage}
-            placeholder={'Введи сообщение и отправь его самолётом...'}
+            onChange={(e)=>changeMessage(e.target.value)}
+            placeholder='Введи сообщение и отправь его самолётом...'
+            value={sendMessageIsLoading ? 'Отправка сообщения...' : message}
+            onKeyDown={checkPressEnter(sendMessage)}
+            disabled={sendMessageIsLoading}
+        />
+        <Button 
+            onClick={sendMessage}
+            disabled={sendMessageIsLoading}
         >
-            {message}
-        </Textarea>
-        <Button onClick={sendMessage}>✈</Button>
+            ✈
+        </Button>
     </Article>
 );
 

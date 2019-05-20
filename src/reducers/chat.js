@@ -13,32 +13,44 @@ const initialState = {
     sendMessageIsLoading: false,
     message: '',
     messages: [],   // [ { id, date, user, message } ]
-    users: [],  // [ { id, color, name } ]
+    users: [],  // [ { id, color, name, online } ]
     user: -1 // id в users
 };
 
 export default ( state = initialState, { type, ...action } ) => {
     switch( type ) {
         case INIT: {
-            const { messages, users, user } = action;
+            const { users, user } = action;
             return {
                 ...state,
                 initIsLoading: false,
-                messages, 
                 users, 
                 user
             }
         }
         
         case ADD_USER: {
-            const { users } = action;
+            const { user } = action;
             return {
                 ...state,
-                users,
+                users: [ ...state.users, user ],
             }
         }
         case EXIT_USER: {
-            const { users } = action;
+            const { user } = action;
+            const users = [...state.users];
+            try {
+                users.find( el => el.id === user ).online = false;
+                return {
+                    ...state,
+                    users,
+                }
+            }
+            catch (err) {
+                console.log( users, user );
+                return state;
+            }
+
             return {
                 ...state,
                 users,
@@ -55,13 +67,14 @@ export default ( state = initialState, { type, ...action } ) => {
             return {
                 ...state,
                 sendMessageIsLoading: false,
+                message: ''
             }
         }
         case RECEIVE_MESSAGE: {
-            const { messages } = action;
+            const { message } = action;
             return {
                 ...state,
-                messages,
+                messages: [ ...state.messages, message ],
             }
         }
         

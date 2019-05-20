@@ -9,31 +9,34 @@ import {
     CLEARE_MESSAGES
 } from '../constants/chat';
 
-export const init = ( messages, users, user ) => ({
+import store from '../containers/helpers/store';
+
+import { sendMessage as sendMessageToServer } from '../client/';
+
+export const init = ( users, user ) => ({
     type: INIT,
-    messages, 
     users, 
     user
 });
 
-export const addUser = ( users ) => ({
+export const addUser = ( user ) => ({
     type: ADD_USER,
-    users, 
+    user, 
 });
-export const exitUser = ( users ) => ({
+export const exitUser = ( user ) => ({
     type: EXIT_USER,
-    users, 
+    user, 
 });
 
-export const sendingMessage = () => ({
+const sendingMessage = () => ({
     type: SENDING_MESSAGE,
 });
 export const sendMessageComplete = () => ({
     type: SEND_MESSAGE_COMPLETE,
 });
-export const receiveMessage = ( messages ) => ({
+export const receiveMessage = ( message ) => ({
     type: RECEIVE_MESSAGE,
-    messages
+    message
 });
 
 export const writingMessage = ( message ) => ({
@@ -41,7 +44,14 @@ export const writingMessage = ( message ) => ({
     message
 });
 
-export const cleareMessage = ( typeCleare ) => ({
+export const cleareMessages = ( typeCleare ) => ({
     type: CLEARE_MESSAGES,
     typeCleare
 });
+
+
+
+export const sendMessage = () => (dispatch) => {
+    dispatch( sendingMessage() );
+    sendMessageToServer( store.getState().chat.message );
+};

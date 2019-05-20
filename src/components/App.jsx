@@ -10,7 +10,7 @@ import { device } from './helpers/sizes';
 const Main = styled.main`
     display: flex;
     flex-direction: column;
-    height: 100vh;
+    min-height: 100vh;
     margin: auto;
     background: #0000000f;
     box-shadow: 0 0 60px 40px #0000000f;
