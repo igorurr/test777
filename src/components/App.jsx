@@ -23,6 +23,7 @@ const Main = styled.main`
 
     @media ${device.tablet} {
         width: 100%;
+        padding: 0 10px;
     }
 `;
 

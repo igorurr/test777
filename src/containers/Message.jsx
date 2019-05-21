@@ -14,11 +14,13 @@ class Message extends Component {
 
     static getDerivedStateFromProps( { getMessage, getUser, isMy, id }, state ) {
         const message = getMessage( id );
+        const user = getUser( message.user );
         return {
             ...state,
             message: {
                 ...message,
-                user: getUser( message.user ),
+                user,
+                online: user.online,
                 isMy: isMy( message.user )
             }
         }

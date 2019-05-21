@@ -1,6 +1,8 @@
 import React from "react";
 import styled from 'styled-components';
 
+import { device } from './helpers/sizes';
+
 const Component = styled.header`
     text-align: center;
     position: sticky;
@@ -26,6 +28,13 @@ const Component = styled.header`
             rgba(0,0,0,0.15) 85%, 
             rgba(0,0,0,0) 100% 
         );
+    }
+
+    @media ${device.tablet} {
+        &::after {
+            left: 0;
+            right: 0;
+        }
     }
 `;
 
@@ -53,11 +62,11 @@ const Content = styled.h2`
     margin-left: 19%;
 `; 
 
-const Header = ( { name, color, isLoading } ) => (
+const Header = ( { name, color, initIsLoading } ) => (
     <Component>
         <Logo>Чат на websocket</Logo>
         <Content>
-            {isLoading ? 
+            {initIsLoading ? 
             (
                 <>Загрузка...</>
             )

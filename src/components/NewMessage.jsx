@@ -3,6 +3,8 @@ import styled from 'styled-components';
 
 import checkPressEnter from './helpers/checkPressEnter';
 
+import { device } from './helpers/sizes';
+
 const Component = styled.article`
     flex: 0 0 auto;
 
@@ -36,6 +38,13 @@ const Component = styled.article`
     &:after {
         bottom: 0;
     }
+
+    @media ${device.tablet} {
+        &:before, &:after {
+            left: 0;
+            right: 0;
+        }
+    }
 `;
 
 const Textarea = styled.textarea`
@@ -58,18 +67,21 @@ const Button = styled.button`
     }
 `;
 
-const NewMessage = ( { sendMessage, changeMessage, message, sendMessageIsLoading } ) => (
+const NewMessage = ( { sendMessage, changeMessage, message, initIsLoading, sendMessageIsLoading } ) => (
     <Component>
         <Textarea 
             onChange={(e)=>changeMessage(e.target.value)}
             placeholder='Введи сообщение и отправь его самолётом...'
-            value={sendMessageIsLoading ? 'Отправка сообщения...' : message}
+            value={
+                initIsLoading ? 'Загрузка чата...' : 
+                sendMessageIsLoading ? 'Отправка сообщения...' : message
+            }
             onKeyDown={checkPressEnter(sendMessage)}
-            disabled={sendMessageIsLoading}
+            disabled={initIsLoading || sendMessageIsLoading}
         />
         <Button 
             onClick={sendMessage}
-            disabled={sendMessageIsLoading}
+            disabled={initIsLoading || sendMessageIsLoading}
         >
             ✈
         </Button>

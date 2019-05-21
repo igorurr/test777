@@ -1,20 +1,18 @@
-import React from "react";
 import { connect } from 'react-redux';
 
-import {  } from './';
 import { Header as Comp } from '../components';
 
 export default connect(
-    state => {
-        if( state.chat.user == -1 )
+    ({ chat: { initIsLoading, users, user } }) => {
+        if( initIsLoading )
             return {
-                isLoading: true
+                initIsLoading: true
             };
 
-        const { name, color } = state.chat.users.find( user => user.id === state.chat.user );
+        const { name, color } = users.find( us => us.id === user );
 
         return {
-            isLoading: false,
+            initIsLoading: false,
             name,
             color,
         }

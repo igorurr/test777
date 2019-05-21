@@ -47,15 +47,27 @@ const Main = styled.main`
     justify-content: flex-end;
 `;
 
+const Online = styled.span`
+    width: 7px;
+    height: 7px;
+    background: ${props => props.online ? 'red' : 'gray'};
+    display: inline-block;
+    border-radius: 100%;
+    vertical-align: text-top;
+    margin-right: 3px;
+`;
 
 
-const Message = ( { date, user, message, isMy } ) => (
+
+const Message = ( { date, user, message, isMy, online } ) => (
     <Component
         color={user.color}
         isMy={isMy}
     >
         <Header>
-            <NickName color={user.color}>{user.name}</NickName> - {moment(date).format('kk:mm DD MMM')}
+            <Online online={online} />
+            <NickName color={user.color}>{user.name}</NickName>
+            - {moment(date).format('kk:mm DD MMM')}
         </Header>
         <Main>{message}</Main>
     </Component>

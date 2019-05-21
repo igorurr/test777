@@ -5,9 +5,10 @@ import { NewMessage as Comp } from '../components';
 import { sendMessage, writingMessage } from '../actions/chat';
 
 export default connect(
-    state => ({
-        message: state.chat.message,
-        sendMessageIsLoading: state.chat.sendMessageIsLoading
+    ({  chat: { initIsLoading, message, sendMessageIsLoading } }) => ({
+        initIsLoading,
+        sendMessageIsLoading,
+        message,
     }),
     dispatch => ({
         sendMessage: () => dispatch( sendMessage() ),
