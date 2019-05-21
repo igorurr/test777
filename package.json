@@ -5,8 +5,8 @@
   "main": "index.js",
   "scripts": {
     "server": "node ./src/server/index.js",
-    "start": "node ./src_dev/prepeare.js --dev && webpack-dev-server --config webpack.dev.config.js",
-    "build": "node ./src_dev/prepeare.js && webpack-dev-server --config webpack.prod.config.js"
+    "start": "node ./scripts/prepeare.js --dev && webpack-dev-server --config webpack.dev.config.js",
+    "build": "node ./scripts/prepeare.js && webpack-dev-server --config webpack.prod.config.js"
   },
   "author": "",
   "license": "ISC",
