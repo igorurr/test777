@@ -39,22 +39,11 @@ export default ( state = initialState, { type, ...action } ) => {
         case EXIT_USER: {
             const { user } = action;
             const users = [...state.users];
-            try {
-                users.find( el => el.id === user ).online = false;
-                return {
-                    ...state,
-                    users,
-                }
-            }
-            catch (err) {
-                console.log( users, user );
-                return state;
-            }
-
+            users.find( el => el.id === user ).online = false;
             return {
                 ...state,
                 users,
-            }
+            };
         }
 
         case SENDING_MESSAGE: {

@@ -4,7 +4,8 @@ import { connect } from 'react-redux';
 import {  } from './';
 import { NewMessage as Comp } from '../components';
 
-import { sendMessage, writingMessage } from '../actions/chat';
+import { actions } from '../store';
+const { sendMessage, writingMessage } = actions;
 
 class NewMessage extends Component {
     render() {

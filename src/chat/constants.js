@@ -1,4 +1,7 @@
 module.exports = {
+    CONNECT: 'connect',
+    DISCONNECT: 'disconnect',
+
     INIT_USER: 'INIT_USER',
 
     ADD_USER: 'ADD_USER',
