@@ -2,13 +2,13 @@ import io from 'socket.io-client';
 
 import store from '../store/store';
 
-import {
-    init,
-    addUser,
-    exitUser,
-    sendMessageComplete,
-    receiveMessage,
-} from '../store/actions/chat';
+import * as actions from '../store/actions';
+console.log(actions)
+const {
+    app:{ init: initApp, exit },
+    chat:{ sendMessageComplete, receiveMessage },
+    user:{ init: initUser, addUser, exitUser },
+} = actions;
 
 import {
     CONNECT,
@@ -35,31 +35,28 @@ export default () => {
     });
 
     socket.on(INIT_USER, ( { users, user } ) => {
-        console.log(INIT_USER);
-        store.dispatch( init( users, user ) );
+        store.dispatch( initUser( users, user ) );
+        store.dispatch( initApp() );
     });
 
     socket.on(ADD_USER, ( { user } ) => {
-        console.log(ADD_USER);
         store.dispatch( addUser( user ) );
     });
 
     socket.on(EXIT_USER, ( { user } ) => {
-        console.log(EXIT_USER);
         store.dispatch( exitUser( user ) );
     });
 
     socket.on(SEND_MESSAGE, () => {
-        console.log(SEND_MESSAGE);
         store.dispatch( sendMessageComplete() );
     });
 
     socket.on(RECEIVE_MESSAGE, ( { message } ) => {
-        console.log(RECEIVE_MESSAGE);
         store.dispatch( receiveMessage( message ) );
     });
 
     socket.on(DISCONNECT, () => {
         console.log('server leave');
+        store.dispatch( exit() );
     });
 }

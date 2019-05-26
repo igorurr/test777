@@ -35,9 +35,12 @@ class Message extends Component {
 };
 
 export default connect(
-    state => ({
-        getMessage: id => state.chat.messages.find( el => el.id === id ),
-        getUser: id => state.chat.users.find( el => el.id === id ),
-        isMy: id => state.chat.user === id,
+    ({ 
+        chat: { messages }, 
+        user: { users, user }
+    }) => ({
+        getMessage: id => messages.find( el => el.id === id ),
+        getUser: id => users.find( el => el.id === id ),
+        isMy: id => user === id,
     })
 )( Message );

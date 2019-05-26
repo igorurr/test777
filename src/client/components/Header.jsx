@@ -62,16 +62,17 @@ const Content = styled.h2`
     margin-left: 19%;
 `; 
 
-const Header = ( { name, color, initIsLoading } ) => (
+const Header = ( { name, color, initIsLoading, isExit } ) => (
     <Component>
         <Logo>Чат на websocket</Logo>
         <Content>
-            {initIsLoading ? 
-            (
+            {initIsLoading ? (
                 <>Загрузка...</>
             )
-            :
-            (
+            : isExit ? (
+                <>Соединение с сервером потеряно</>
+            )
+            : (
                 <>
                     твой ник: <UserNickname color={color}>{name}</UserNickname>, 
                     цвет: <UserColor color={color} />

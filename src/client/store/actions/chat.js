@@ -1,7 +1,4 @@
 import {
-    INIT,
-    ADD_USER,
-    EXIT_USER,
     SENDING_MESSAGE,
     SEND_MESSAGE_COMPLETE,
     RECEIVE_MESSAGE,
@@ -13,21 +10,6 @@ import { store } from '../';
 // использование import { actions } from '../../chat' вызывает ошибку
 import * as actions from '../../chat/actions';
 const { sendMessage: sendMessageToServer } = actions;
-
-export const init = ( users, user ) => ({
-    type: INIT,
-    users, 
-    user
-});
-
-export const addUser = ( user ) => ({
-    type: ADD_USER,
-    user, 
-});
-export const exitUser = ( user ) => ({
-    type: EXIT_USER,
-    user, 
-});
 
 const sendingMessage = () => ({
     type: SENDING_MESSAGE,

@@ -3,16 +3,21 @@ import { connect } from 'react-redux';
 import { Header as Comp } from '../components';
 
 const Header = connect(
-    ({ chat: { initIsLoading, users, user } }) => {
-        if( initIsLoading )
+    ({
+        app: { initIsLoading, isExit },
+        user: { users, user },
+    }) => {
+        if( initIsLoading || isExit )
             return {
-                initIsLoading: true
+                initIsLoading,
+                isExit
             };
 
         const { name, color } = users.find( us => us.id === user );
 
         return {
-            initIsLoading: false,
+            initIsLoading,
+            isExit,
             name,
             color,
         }

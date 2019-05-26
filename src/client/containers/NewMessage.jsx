@@ -6,7 +6,10 @@ import { actions } from '../store';
 const { sendMessage, writingMessage } = actions.chat;
 
 const NewMessage = connect(
-    ({  chat: { initIsLoading, message, sendMessageIsLoading } }) => ({
+    ({ 
+        app: { initIsLoading },
+        chat: { message, sendMessageIsLoading },
+    }) => ({
         initIsLoading,
         sendMessageIsLoading,
         message,
