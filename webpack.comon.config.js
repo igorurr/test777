@@ -1,5 +1,5 @@
 module.exports = {
-  entry: "./src2/client/index.jsx",
+  entry: "./src/client/index.jsx",
   module: {
     rules: [
       {

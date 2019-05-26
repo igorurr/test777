@@ -1,11 +1,11 @@
 import { connect } from 'react-redux';
 
-import { NewMessage } from '../components';
+import { NewMessage as Comp } from '../components';
 
 import { actions } from '../store';
 const { sendMessage, writingMessage } = actions.chat;
 
-export default connect(
+const NewMessage = connect(
     ({  chat: { initIsLoading, message, sendMessageIsLoading } }) => ({
         initIsLoading,
         sendMessageIsLoading,
@@ -15,4 +15,6 @@ export default connect(
         sendMessage: () => dispatch( sendMessage() ),
         changeMessage: message => dispatch( writingMessage( message ) ),
     })
-)( NewMessage );
+)( Comp );
+
+export default NewMessage;

@@ -2,7 +2,7 @@ import { connect } from 'react-redux';
 
 import { Header as Comp } from '../components';
 
-export default connect(
+const Header = connect(
     ({ chat: { initIsLoading, users, user } }) => {
         if( initIsLoading )
             return {
@@ -18,3 +18,5 @@ export default connect(
         }
     }
 )( Comp );
+
+export default Header;
