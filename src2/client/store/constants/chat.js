@@ -1,0 +1,10 @@
+export const INIT = 'INIT';
+
+export const ADD_USER = 'ADD_USER';
+export const EXIT_USER = 'EXIT_USER';
+
+export const SENDING_MESSAGE = 'SENDING_MESSAGE';
+export const SEND_MESSAGE_COMPLETE = 'SEND_MESSAGE_COMPLETE';
+export const RECEIVE_MESSAGE = 'RECEIVE_MESSAGE';
+
+export const WRITING_MESSAGE = 'WRITING_MESSAGE';

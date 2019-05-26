@@ -7,6 +7,6 @@ const defaultBuildFolder = isDev ? 'dev' : 'last';
 
 fse.remove(`../build/${defaultBuildFolder}`)
   .then( 
-    () => fse.copy('./src/public/', `./build/${defaultBuildFolder}/`),
-    () => fse.copy('./src/public/', `./build/${defaultBuildFolder}/`)
+    () => fse.copy('./src2/client/public/', `./build/${defaultBuildFolder}/`),
+    () => fse.copy('./src2/client/public/', `./build/${defaultBuildFolder}/`)
   )
