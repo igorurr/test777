@@ -4,9 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "server": "node ./src/chat/server/index.js",
-    "start": "node ./src_dev/prepeare.js --dev && webpack-dev-server --config webpack.dev.config.js",
-    "build": "node ./src_dev/prepeare.js && webpack-dev-server --config webpack.prod.config.js"
+    "server": "node ./src2/server/index.js",
+    "client": "node ./scripts/prepeare.js --dev && webpack-dev-server --config webpack.dev.config.js",
+    "build": "node ./scripts/prepeare.js && webpack-dev-server --config webpack.prod.config.js"
   },
   "author": "",
   "license": "ISC",

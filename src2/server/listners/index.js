@@ -17,9 +17,11 @@ const { actions: {
 
 const createAction = require('./createAction');
 
+const SEND_MESSAGE_DELAY = 1000;
+
 module.exports = {
     connect: createAction( ( data, store, socket, ioServer  ) => {
-	    console.log( ADD_USER, newUser );
+	    console.log( ADD_USER, store.getState().users.newUserId );
 
     	const user = createUser( store.getState().users.newUserId );
 
@@ -29,27 +31,29 @@ module.exports = {
     	socket.emit( INIT_USER, {
     		users: store.getState().users.users,
     		user: user.id
-    	} );
+		} );
+		
+		return user.id;
     }),
 
-    sendMessage: createAction( ( { message }, store, socket, ioServer  ) => {
+    sendMessage: createAction( ( { message, userId }, store, socket, ioServer  ) => {
         setTimeout( ()=> {
-            console.log( SEND_MESSAGE, user.id );
+            console.log( SEND_MESSAGE, userId );
             const msg = {
-                id: newMsg,
+                id: store.getState().messages.newMessageId,
                 message,
-                user: user.id,
+                user: userId,
                 date: moment().utc().valueOf()
-            };
-            newMsg++;
+			};
+			store.dispatch( incrementMessageId() );
             ioServer.sockets.emit( RECEIVE_MESSAGE, { message: msg } );
             socket.emit( SEND_MESSAGE, { message: msg } );
-        }, 1000 );
+        }, SEND_MESSAGE_DELAY );
     }),
 
-    disconnect: createAction( ( data, store, socket, ioServer  ) => {
-		console.log( EXIT_USER, user.id );
-		socket.broadcast.emit( EXIT_USER, { user: user.id } );
-		users.find( el => el.id === user.id ).online = false;
+    disconnect: createAction( ( {id}, store, socket, ioServer  ) => {
+		console.log( EXIT_USER, id );
+		store.dispatch( exitUser(id) );
+		socket.broadcast.emit( EXIT_USER, { user: id } );
     }),
 };

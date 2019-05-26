@@ -5,7 +5,7 @@ import {  } from './';
 import { NewMessage as Comp } from '../components';
 
 import { actions } from '../store';
-const { sendMessage, writingMessage } = actions;
+const { sendMessage, writingMessage } = actions.chat;
 
 class NewMessage extends Component {
     render() {

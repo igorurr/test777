@@ -1,13 +1,14 @@
 import io from 'socket.io-client';
 
-import { store, actions } from '../../store';
-const {
+import store from '../store/store';
+
+import {
     init,
     addUser,
     exitUser,
     sendMessageComplete,
     receiveMessage,
-} = actions;
+} from '../store/actions/chat';
 
 import {
     CONNECT,
@@ -17,10 +18,12 @@ import {
     EXIT_USER,
     SEND_MESSAGE,
     RECEIVE_MESSAGE
-} from '../constants';
+} from '../../constants';
+
+export let socket = null;
 
 export default () => {
-    const socket = io('http://localhost:9876');
+    socket = io('http://localhost:9876');
 
     socket.on(CONNECT, () => {
         console.log('connect to server');
