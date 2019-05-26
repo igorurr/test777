@@ -2,13 +2,9 @@ import io from 'socket.io-client';
 
 import store from '../store/store';
 
-import * as actions from '../store/actions';
-console.log(actions)
-const {
-    app:{ init: initApp, exit },
-    chat:{ sendMessageComplete, receiveMessage },
-    user:{ init: initUser, addUser, exitUser },
-} = actions;
+import { initApp, exitApp } from '../store/actions/app';
+import { sendMessageComplete, receiveMessage } from '../store/actions/chat';
+import { initUser, addUser, exitUser } from '../store/actions/user';
 
 import {
     CONNECT,
@@ -57,6 +53,6 @@ export default () => {
 
     socket.on(DISCONNECT, () => {
         console.log('server leave');
-        store.dispatch( exit() );
+        store.dispatch( exitApp() );
     });
 }

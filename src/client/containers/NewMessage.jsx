@@ -7,11 +7,13 @@ const { sendMessage, writingMessage } = actions.chat;
 
 const NewMessage = connect(
     ({ 
-        app: { initIsLoading },
+        app: { initIsLoading, isExit },
         chat: { message, sendMessageIsLoading },
     }) => ({
         initIsLoading,
+        isExit,
         sendMessageIsLoading,
+        isReady: !initIsLoading && !isExit && !sendMessageIsLoading,
         message,
     }),
     dispatch => ({

@@ -1,6 +1,6 @@
 import {
-    INIT,
-    EXIT,
+    INIT_APP,
+    EXIT_APP,
 } from '../constants/app';
 
 const initialState = {
@@ -10,16 +10,13 @@ const initialState = {
 
 export default ( state = initialState, { type, ...action } ) => {
     switch( type ) {
-        case INIT: {
-            const { users, user } = action;
+        case INIT_APP: {
             return {
                 ...state,
                 initIsLoading: false,
-                users, 
-                user
             }
         }
-        case EXIT: {
+        case EXIT_APP: {
             return {
                 ...state,
                 isExit: true

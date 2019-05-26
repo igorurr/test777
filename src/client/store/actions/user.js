@@ -1,11 +1,11 @@
 import {
-    INIT,
+    INIT_USER,
     ADD_USER,
     EXIT_USER
 } from '../constants/user';
 
-export const init = ( users, user ) => ({
-    type: INIT,
+export const initUser = ( users, user ) => ({
+    type: INIT_USER,
     users, 
     user
 });

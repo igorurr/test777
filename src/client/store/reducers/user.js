@@ -1,5 +1,5 @@
 import {
-    INIT,
+    INIT_USER,
     ADD_USER,
     EXIT_USER,
 } from '../constants/user';
@@ -11,7 +11,7 @@ const initialState = {
 
 export default ( state = initialState, { type, ...action } ) => {
     switch( type ) {
-        case INIT: {
+        case INIT_USER: {
             const { users, user } = action;
             return {
                 ...state,

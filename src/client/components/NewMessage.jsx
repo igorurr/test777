@@ -67,21 +67,30 @@ const Button = styled.button`
     }
 `;
 
-const NewMessage = ( { sendMessage, changeMessage, message, initIsLoading, sendMessageIsLoading } ) => (
+const NewMessage = ( { 
+    sendMessage, 
+    changeMessage, 
+    message, 
+    initIsLoading, 
+    sendMessageIsLoading,
+    isExit,
+    isReady
+} ) => (
     <Component>
         <Textarea 
             onChange={(e)=>changeMessage(e.target.value)}
             placeholder='Введи сообщение и отправь его самолётом...'
             value={
                 initIsLoading ? 'Загрузка чата...' : 
+                isExit ? 'Соединение с сервером потеряно' : 
                 sendMessageIsLoading ? 'Отправка сообщения...' : message
             }
             onKeyDown={checkPressEnter(sendMessage)}
-            disabled={initIsLoading || sendMessageIsLoading}
+            disabled={!isReady}
         />
         <Button 
             onClick={sendMessage}
-            disabled={initIsLoading || sendMessageIsLoading}
+            disabled={!isReady}
         >
             ✈
         </Button>
