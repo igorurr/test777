@@ -1,0 +1,22 @@
+{
+  "compilerOptions": {
+    "strict": true,
+    "allowSyntheticDefaultImports": true,
+    "sourceMap": true,
+    "noImplicitAny": false,
+    "module": "commonjs",
+    "target": "es6",
+    "lib": [
+      "es2018",
+      "dom"
+    ],
+    "removeComments": true,
+    "jsx": "react",
+    "allowJs": true,
+    "baseUrl": "."
+  },
+  "exclude": [
+    "node_modules",
+    "build",
+  ]
+}

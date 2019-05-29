@@ -1,4 +1,4 @@
-import React from "react";
+import * as React from "react";
 import styled from 'styled-components';
 
 import { device } from './helpers/sizes';
@@ -62,7 +62,19 @@ const Content = styled.h2`
     margin-left: 19%;
 `; 
 
-const Header = ( { name, color, initIsLoading, isExit } ) => (
+export interface IHeaderProps {  
+    name: string;
+    color: string;
+    initIsLoading: boolean;
+    isExit: boolean;
+};
+
+const Header = ( { 
+    name, 
+    color, 
+    initIsLoading, 
+    isExit
+}: IHeaderProps ) => (
     <Component>
         <Logo>Чат на websocket</Logo>
         <Content>

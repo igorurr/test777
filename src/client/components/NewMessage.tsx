@@ -1,4 +1,4 @@
-import React from "react";
+import * as React from "react";
 import styled from 'styled-components';
 
 import checkPressEnter from './helpers/checkPressEnter';
@@ -67,6 +67,16 @@ const Button = styled.button`
     }
 `;
 
+export interface INewMessageProps { 
+    sendMessage: () => void; 
+    changeMessage: (message: string) => void;
+    message: string;
+    initIsLoading: boolean;
+    sendMessageIsLoading: boolean;
+    isExit: boolean;
+    isReady: boolean;
+};
+
 const NewMessage = ( { 
     sendMessage, 
     changeMessage, 
@@ -75,7 +85,7 @@ const NewMessage = ( {
     sendMessageIsLoading,
     isExit,
     isReady
-} ) => (
+}: INewMessageProps ) => (
     <Component>
         <Textarea 
             onChange={(e)=>changeMessage(e.target.value)}

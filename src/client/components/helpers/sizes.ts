@@ -8,11 +8,21 @@ export const size = {
     desktop: 2560
 }
 
+export interface ISizes { 
+    mobileS: string,
+    mobileM: string,
+    mobileL: string,
+    tablet: string,
+    laptop: string,
+    laptopL: string,
+    desktop: string
+};
+
 // mobileS: `(max-width: ${size.mobileS}px)`, ...
-export const device = Object.keys(size).reduce( 
+export const device: ISizes = Object.keys(size).reduce( 
     ( acc, el ) => {
         acc[el] = `(max-width: ${size[el]}px)`; 
         return acc;
     },
-    {}
+    {} as ISizes
 );

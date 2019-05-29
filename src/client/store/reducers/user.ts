@@ -4,7 +4,9 @@ import {
     EXIT_USER,
 } from '../constants/user';
 
-const initialState = {
+import { IUserStore } from '../types/user';
+
+const initialState: IUserStore = {
     users: [],  // [ { id, color, name, online } ]
     user: -1 // id в users
 };
@@ -30,7 +32,8 @@ export default ( state = initialState, { type, ...action } ) => {
         case EXIT_USER: {
             const { user } = action;
             const users = [...state.users];
-            users.find( el => el.id === user ).online = false;
+            const offlineUser = users.find( el => el.id === user );
+            offlineUser && ( offlineUser.online = false );
             return {
                 ...state,
                 users,

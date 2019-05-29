@@ -6,6 +6,9 @@ import { initApp, exitApp } from '../store/actions/app';
 import { sendMessageComplete, receiveMessage } from '../store/actions/chat';
 import { initUser, addUser, exitUser } from '../store/actions/user';
 
+import { IMessage } from '../store/types/chat';
+import { IUser } from '../store/types/user';
+
 import {
     CONNECT,
     DISCONNECT,
@@ -16,7 +19,24 @@ import {
     RECEIVE_MESSAGE
 } from '../../constants';
 
-export let socket = null;
+export let socket: any = {};
+
+interface IInitUserArgs {
+    users: Array<IUser>;
+    user: number;
+}
+
+interface IAddUserArgs {
+    user: IUser;
+}
+
+interface IExitUserArgs {
+    user: number;
+}
+
+interface IReceiveMessageArgs {
+    message: IMessage;
+}
 
 export default () => {
     socket = io(
@@ -30,16 +50,16 @@ export default () => {
         console.log('connect to server');
     });
 
-    socket.on(INIT_USER, ( { users, user } ) => {
+    socket.on(INIT_USER, ( { users, user }: IInitUserArgs ) => {
         store.dispatch( initUser( users, user ) );
         store.dispatch( initApp() );
     });
 
-    socket.on(ADD_USER, ( { user } ) => {
+    socket.on(ADD_USER, ( { user }: IAddUserArgs ) => {
         store.dispatch( addUser( user ) );
     });
 
-    socket.on(EXIT_USER, ( { user } ) => {
+    socket.on(EXIT_USER, ( { user }: IExitUserArgs ) => {
         store.dispatch( exitUser( user ) );
     });
 
@@ -47,7 +67,7 @@ export default () => {
         store.dispatch( sendMessageComplete() );
     });
 
-    socket.on(RECEIVE_MESSAGE, ( { message } ) => {
+    socket.on(RECEIVE_MESSAGE, ( { message }: IReceiveMessageArgs ) => {
         store.dispatch( receiveMessage( message ) );
     });
 

@@ -5,7 +5,12 @@ import {
     WRITING_MESSAGE
 } from '../constants/chat';
 
-import { store } from '../';
+import { IMessage } from '../types/chat';
+
+import { 
+    store,
+
+} from '../';
 
 // использование import { actions } from '../../chat' вызывает ошибку
 import * as actions from '../../chat/actions';
@@ -17,12 +22,12 @@ const sendingMessage = () => ({
 export const sendMessageComplete = () => ({
     type: SEND_MESSAGE_COMPLETE,
 });
-export const receiveMessage = ( message ) => ({
+export const receiveMessage = ( message: IMessage ) => ({
     type: RECEIVE_MESSAGE,
     message
 });
 
-export const writingMessage = ( message ) => ({
+export const writingMessage = ( message: string ) => ({
     type: WRITING_MESSAGE,
     message
 });

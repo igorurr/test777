@@ -1,10 +1,13 @@
 const path = require("path");
 const comon = require("./webpack.comon.config");
 
+const devdir = path.join(__dirname, "../../build/dev");
+console.log(devdir);
+
 module.exports = {
   ...comon,
   output: {
-    path: path.join(__dirname, "/build/dev"),
+    path: devdir,
     filename: "bundle.js"
   },
   devtool: 'inline-source-map',
@@ -15,7 +18,7 @@ module.exports = {
     ignored: ['node_modules']
   },
   devServer: {
-    contentBase: path.join(__dirname, "/build/dev"),
+    contentBase: devdir,
     port: 3000
   }
 };

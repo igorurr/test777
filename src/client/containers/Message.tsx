@@ -1,9 +1,16 @@
-import React, { Component } from "react";
+import * as React from "react";
 import { connect } from 'react-redux';
 
 import { Message as Comp } from '../components';
 
-class Message extends Component {
+export interface IMessage {
+}
+  
+interface State {
+    message
+}
+
+class Message extends React.Component<IMessage, State> {
     constructor(props) {
         super(props);
 

@@ -5,7 +5,9 @@ import {
     WRITING_MESSAGE,
 } from '../constants/chat';
 
-const initialState = {
+import { IChatStore } from '../types/chat';
+
+const initialState: IChatStore = {
     sendMessageIsLoading: false,
     message: '',
     messages: [],   // [ { id, date, user, message } ]

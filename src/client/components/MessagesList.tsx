@@ -1,4 +1,4 @@
-import React from "react";
+import * as React from "react";
 import styled from 'styled-components';
 
 const Component = styled.article`
@@ -7,9 +7,14 @@ const Component = styled.article`
     flex-direction: column;
 `;
 
+import { IMessageProps } from './';
 import { Message } from '../containers';
 
-const MessagesList = ( { messages } ) => (
+export interface IMessagesListProps {
+    messages: Array<IMessageProps>;
+};
+
+const MessagesList = ( { messages }: IMessagesListProps ) => (
     <Component>
         {messages.map( el => (
             <Message key={el.id} id={el.id} />

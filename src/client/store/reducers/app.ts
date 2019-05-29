@@ -3,7 +3,9 @@ import {
     EXIT_APP,
 } from '../constants/app';
 
-const initialState = {
+import { IAppStore } from '../types/app';
+
+const initialState: IAppStore = {
     initIsLoading: true,
     isExit: false,
 };

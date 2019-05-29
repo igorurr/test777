@@ -1,6 +1,8 @@
-import React from "react";
+import * as React from "react";
 import moment from 'moment';
 import styled from 'styled-components';
+
+import { IUser } from "../store/types/user";
 
 const Component = styled.article`
     background: #fff;
@@ -57,9 +59,22 @@ const Online = styled.span`
     margin-right: 3px;
 `;
 
+export interface IMessageProps {
+    id: Number 
+    date: number;
+    user: IUser;
+    isMy: boolean; 
+    online: boolean;
+    message: string;
+};
 
-
-const Message = ( { date, user, message, isMy, online } ) => (
+const Message = ( { 
+    date, 
+    user, 
+    message, 
+    isMy, 
+    online 
+}: IMessageProps ) => (
     <Component
         color={user.color}
         isMy={isMy}
