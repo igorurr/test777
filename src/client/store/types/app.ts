@@ -1,4 +1,4 @@
 export interface IAppStore {
-    initIsLoading: boolean,
-    isExit: boolean,
-};
+  initIsLoading: boolean;
+  isExit: boolean;
+}

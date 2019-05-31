@@ -1,9 +1,7 @@
-import { socket } from './worker';
+import { socket } from "./worker";
 
-import {
-    SEND_MESSAGE,
-} from '../../constants';
+import { SEND_MESSAGE } from "../../constants";
 
-export const sendMessage = ( message: string ) => {
-    socket.emit(SEND_MESSAGE, {message});
+export const sendMessage = (message: string) => {
+  socket.emit(SEND_MESSAGE, { message });
 };

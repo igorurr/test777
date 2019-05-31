@@ -1,4 +1,4 @@
-import * as actions from './actions';
+import * as actions from "./actions";
 export { actions };
 
-export { default as store } from './store';
+export { default as store } from "./store";
