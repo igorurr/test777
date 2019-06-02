@@ -28,7 +28,7 @@ export default (state = initialState, { type, ...action }) => {
     case EXIT_USER: {
       const { user } = action;
       const users = [...state.users];
-      const offlineUser = users.find((el) => el.id === user);
+      const offlineUser = users.find(el => el.id === user);
       offlineUser && (offlineUser.online = false);
       return {
         ...state,

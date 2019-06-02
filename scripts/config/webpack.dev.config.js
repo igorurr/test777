@@ -1,11 +1,11 @@
 const path = require("path");
-const comon = require("./webpack.comon.config");
+const common = require("./webpack.common.config");
 
 const devdir = path.join(__dirname, "../../build/dev");
 console.log(devdir);
 
 module.exports = {
-  ...comon,
+  ...common,
   output: {
     path: devdir,
     filename: "bundle.js"

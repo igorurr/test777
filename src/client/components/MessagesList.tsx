@@ -16,7 +16,7 @@ export interface IMessagesListProps {
 
 const MessagesList = ({ messages }: IMessagesListProps) => (
   <Component>
-    {messages.map((el) => (
+    {messages.map(el => (
       <Message key={el.id} id={el.id} />
     ))}
   </Component>

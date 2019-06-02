@@ -24,5 +24,5 @@ export const device: ISizes = Object.keys(size).reduce(
     acc[el] = `(max-width: ${size[el]}px)`;
     return acc;
   },
-  {} as ISizes
+  {} as any,
 );

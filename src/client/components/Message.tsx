@@ -15,7 +15,7 @@ const Component = styled.article`
   border-radius: 10px;
   display: flex;
   flex-direction: column;
-  ${(props) => props.isMy && "align-self: flex-end;"}
+  ${props => props.isMy && "align-self: flex-end;"}
 
   &:before {
     content: "";
@@ -25,11 +25,7 @@ const Component = styled.article`
     width: 70px;
     height: 70px;
     border-radius: 5px;
-    background: linear-gradient(
-      135deg,
-      ${(props) => props.color} 0%,
-      #fff0 50%
-    );
+    background: linear-gradient(135deg, ${props => props.color} 0%, #fff0 50%);
   }
 `;
 
@@ -38,7 +34,7 @@ const Header = styled.header`
 `;
 
 const NickName = styled.span`
-  color: ${(props) => props.color};
+  color: ${props => props.color};
 `;
 
 const Main = styled.main`
@@ -52,7 +48,7 @@ const Main = styled.main`
 const Online = styled.span`
   width: 7px;
   height: 7px;
-  background: ${(props) => (props.online ? "red" : "gray")};
+  background: ${props => (props.online ? "red" : "gray")};
   display: inline-block;
   border-radius: 100%;
   vertical-align: text-top;

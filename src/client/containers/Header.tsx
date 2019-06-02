@@ -10,7 +10,7 @@ const Header = connect(
         isExit,
       };
 
-    const { name, color } = users.find((us) => us.id === user);
+    const { name, color } = users.find(us => us.id === user);
 
     return {
       initIsLoading,
@@ -18,7 +18,7 @@ const Header = connect(
       name,
       color,
     };
-  }
+  },
 )(Comp);
 
 export default Header;

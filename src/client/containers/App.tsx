@@ -7,7 +7,7 @@ import { App as Comp } from "../components";
 import { worker } from "../chat/";
 
 class App extends React.Component {
-  render() {
+  public render() {
     return (
       <Provider store={store}>
         <Comp />
@@ -15,7 +15,7 @@ class App extends React.Component {
     );
   }
 
-  componentDidMount() {
+  public componentDidMount() {
     worker();
   }
 }

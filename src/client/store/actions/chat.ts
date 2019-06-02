@@ -29,7 +29,7 @@ export const writingMessage = (message: string) => ({
   message,
 });
 
-export const sendMessage = () => (dispatch) => {
+export const sendMessage = () => dispatch => {
   dispatch(sendingMessage());
   sendMessageToServer(store.getState().chat.message);
 };

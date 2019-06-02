@@ -6,5 +6,5 @@ import * as reducers from "./reducers/";
 
 export default createStore(
   combineReducers(reducers),
-  composeWithDevTools(applyMiddleware(thunk))
+  composeWithDevTools(applyMiddleware(thunk)),
 );

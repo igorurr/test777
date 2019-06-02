@@ -39,14 +39,14 @@ const Component = styled.header`
 `;
 
 const UserNickname = styled.span`
-  color: ${(props) => props.color};
+  color: ${props => props.color};
 `;
 
 const UserColor = styled.span`
   width: 15px;
   height: 15px;
   display: inline-block;
-  background: ${(props) => props.color};
+  background: ${props => props.color};
   vertical-align: middle;
   border-radius: 100%;
 `;

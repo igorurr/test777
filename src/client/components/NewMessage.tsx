@@ -90,7 +90,7 @@ const NewMessage = ({
 }: INewMessageProps) => (
   <Component>
     <Textarea
-      onChange={(e) => changeMessage(e.target.value)}
+      onChange={changeMessage}
       placeholder="Введи сообщение и отправь его самолётом..."
       value={
         initIsLoading

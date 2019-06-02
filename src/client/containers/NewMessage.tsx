@@ -16,10 +16,10 @@ const NewMessage = connect(
     isReady: !initIsLoading && !isExit && !sendMessageIsLoading,
     message,
   }),
-  (dispatch) => ({
+  dispatch => ({
     sendMessage: () => dispatch(sendMessage()),
-    changeMessage: (message) => dispatch(writingMessage(message)),
-  })
+    changeMessage: e => dispatch(writingMessage(e.target.value)),
+  }),
 )(Comp);
 
 export default NewMessage;
