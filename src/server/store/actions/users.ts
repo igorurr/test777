@@ -1,9 +1,6 @@
-const {
-    ADD_USER,
-    EXIT_USER,
-} = require('../constants/users');
+import { ADD_USER, EXIT_USER } from "../constants/users";
 
-module.exports = {
-    addUser: ( user ) => ({ type: ADD_USER, user }),
-    exitUser: ( user ) => ({ type: EXIT_USER, user }),
-};
+import { IUser } from "../types/users";
+
+export const addUser = (user: IUser) => ({ type: ADD_USER, user });
+export const exitUser = (user: number) => ({ type: EXIT_USER, user });

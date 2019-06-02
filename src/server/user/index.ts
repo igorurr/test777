@@ -1,3 +1,1 @@
-module.exports = {
-    createUser: require('./createUser')
-};
+export { default as createUser } from "./createUser";

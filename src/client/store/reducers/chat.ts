@@ -10,7 +10,7 @@ import { IChatStore } from "../types/chat";
 const initialState: IChatStore = {
   sendMessageIsLoading: false,
   message: "",
-  messages: [], // [ { id, date, user, message } ]
+  messages: [],
 };
 
 export default (state = initialState, { type, ...action }) => {

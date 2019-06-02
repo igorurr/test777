@@ -1,21 +1,19 @@
-const {
-    INCREMENT_MESSAGE_ID
-} = require('../constants/messages');
+import { INCREMENT_MESSAGE_ID } from "../constants/messages";
 
 const initialState = {
-    newMessageId: 0
+  newMessageId: 0,
 };
 
-module.exports = ( state = initialState, { type, ...action } ) => {
-    switch( type ) {
-        case INCREMENT_MESSAGE_ID: {
-            return {
-                ...state,
-                newMessageId: state.newMessageId + 1,
-            }
-        }
-
-        default:
-            return state;
+export default (state = initialState, { type, ...action }) => {
+  switch (type) {
+    case INCREMENT_MESSAGE_ID: {
+      return {
+        ...state,
+        newMessageId: state.newMessageId + 1,
+      };
     }
+
+    default:
+      return state;
+  }
 };

@@ -1,4 +1,4 @@
-module.exports = {
-    store: require('./store'),
-    actions: require('./actions')
-};
+export { default as store } from "./store";
+
+import * as actions from "./actions";
+export { actions };

@@ -1,7 +1,5 @@
-const { createStore, combineReducers, applyMiddleware  } = require('redux');
+import { createStore, combineReducers, applyMiddleware } from "redux";
 
-const reducers = require('./reducers');
+import * as reducers from "./reducers";
 
-module.exports = createStore(
-    combineReducers( reducers ),
-);
+export default createStore(combineReducers(reducers as {}));

@@ -1,12 +1,10 @@
-module.exports = {
-    CONNECT: 'connect',
-    DISCONNECT: 'disconnect',
+export const CONNECT = "connect";
+export const DISCONNECT = "disconnect";
 
-    INIT_USER: 'INIT_USER',
+export const INIT_USER = "INIT_USER";
 
-    ADD_USER: 'ADD_USER',
-    EXIT_USER: 'EXIT_USER',
-    
-    SEND_MESSAGE: 'SEND_MESSAGE',
-    RECEIVE_MESSAGE: 'RECEIVE_MESSAGE',
-};
+export const ADD_USER = "ADD_USER";
+export const EXIT_USER = "EXIT_USER";
+
+export const SEND_MESSAGE = "SEND_MESSAGE";
+export const RECEIVE_MESSAGE = "RECEIVE_MESSAGE";

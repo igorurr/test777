@@ -1,7 +1,3 @@
-const {
-    INCREMENT_MESSAGE_ID
-} = require('../constants/messages');
+import { INCREMENT_MESSAGE_ID } from "../constants/messages";
 
-module.exports = {
-    incrementMessageId: ( ) => ({ type: INCREMENT_MESSAGE_ID })
-};
+export const incrementMessageId = () => ({ type: INCREMENT_MESSAGE_ID });

@@ -2,7 +2,7 @@ const path = require("path");
 const common = require("./webpack.common.config");
 
 const builddir = path.join(__dirname, "../../build/last");
-console.log(builddir);
+console.log(`дирректроия: ${builddir}`);
 
 module.exports = {
   ...common,

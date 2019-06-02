@@ -2,7 +2,7 @@ const path = require("path");
 const common = require("./webpack.common.config");
 
 const devdir = path.join(__dirname, "../../build/dev");
-console.log(devdir);
+console.log(`дирректроия: ${devdir}`);
 
 module.exports = {
   ...common,
