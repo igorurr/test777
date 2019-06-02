@@ -1,4 +1,4 @@
-export { default as worker } from './worker';
+export { default as worker } from "./worker";
 
-import * as actions from './actions';
+import * as actions from "./actions";
 export { actions };

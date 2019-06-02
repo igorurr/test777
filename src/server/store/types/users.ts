@@ -6,6 +6,6 @@ export interface IUser {
 }
 
 export interface IUserStore {
-  user: number;
+  newUserId: number;
   users: IUser[];
 }

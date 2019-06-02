@@ -1,27 +1,19 @@
-import { INIT_USER, ADD_USER, EXIT_USER } from "../constants/user";
+import { ADD_USER, EXIT_USER } from "../constants/users";
 
-import { IUserStore } from "../types/user";
+import { IUser, IUserStore } from "../types/users";
 
 const initialState: IUserStore = {
   users: [], // [ { id, color, name, online } ]
-  user: -1, // id в users
+  newUserId: 0,
 };
 
 export default (state = initialState, { type, ...action }) => {
   switch (type) {
-    case INIT_USER: {
-      const { users, user } = action;
-      return {
-        ...state,
-        users,
-        user,
-      };
-    }
-
     case ADD_USER: {
       const { user } = action;
       return {
         ...state,
+        newUserId: state.newUserId + 1,
         users: [...state.users, user],
       };
     }

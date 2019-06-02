@@ -1,3 +1,0 @@
-module.exports = {
-    INCREMENT_MESSAGE_ID: 'INCREMENT_MESSAGE_ID'
-};
