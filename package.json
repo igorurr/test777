@@ -23,6 +23,7 @@
   "dependencies": {
     "@types/react": "^16.8.18",
     "@types/react-dom": "^16.8.4",
+    "@types/socket.io": "^2.1.2",
     "express": "^4.17.0",
     "moment": "^2.24.0",
     "react": "^16.8.6",
