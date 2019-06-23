@@ -10,17 +10,18 @@
 
 Чтобы запустить чат необходимо лишь запустить сервер и локально открыть его на разных страницах. Каждая открытая страница - пользователь, зарегистрированый автоматически
 
-несколько скринов:
+[image 1](https://raw.githubusercontent.com/igorurr/test777/master/screens/1.png)
+[image 2](https://raw.githubusercontent.com/igorurr/test777/master/screens/2.png)
 
 # Запуск проекта:
 
-npm i - зависимости, выполнить перед первым запуском
+``` npm i ``` - зависимости, выполнить перед первым запуском
 
-npm i -g typescript - установка typescripta, тоже только перед первым запуском
+``` npm i -g typescript ``` - установка typescripta, тоже только перед первым запуском
 
-npm run server - запускает сервер чата
+``` npm run server ``` - запускает сервер чата
 
-npm run client - запускает дев сервер
+``` npm run client ``` - запускает дев сервер
 
 открываем в браузере localhost:3000
 
